@@ -1,16 +1,8 @@
-# GHCR Container Image Template
+# Caddy Geolocation Container
 
-[![Build](https://github.com/manics/ghcr-container-image-template/actions/workflows/build.yml/badge.svg)](https://github.com/manics/ghcr-container-image-template/actions/workflows/build.yml)
+[![Build](https://github.com/manics/caddy-geolocation-container/actions/workflows/build.yml/badge.svg)](https://github.com/manics/caddy-geolocation-container/actions/workflows/build.yml)
 
-A template repository for automatically building and pushing container (Docker) images to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+A Caddy container image with https://github.com/porech/caddy-maxmind-geolocation
 
-To use this repository click `Use this template` and modify [`Dockerfile`](Dockerfile).
-
-[GitHub actions](.github/workflows/build.yml) will build every image for AMD64 and ARM64.
-- Every push to `main` is pushed to `ghcr.io/${{ github.repository }}:main`.
-- Tags are pushed to `ghcr.io/${{ github.repository }}:TAG`.
-
-## Licence
-
-This repository uses the MIT No Attribution licence.
-Feel free to use and relicense as you wish.
+## Usage
+Download the free `GeoLite2-Country.mmdb` and/or `GeoLite2-City.mmdb` database files from [Maxmind](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/).

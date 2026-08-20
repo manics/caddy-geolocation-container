@@ -1,4 +1,15 @@
-FROM docker.io/library/alpine:latest
+######################################################################
+# Cross compile (faster than emulating arm64)
+FROM --platform=$BUILDPLATFORM docker.io/library/caddy:2.11.4-builder AS builder
 
-# RUN ...
-# CMD [...]
+ARG TARGETARCH
+ARG TARGETOS
+
+RUN xcaddy build \
+    --with github.com/porech/caddy-maxmind-geolocation
+
+######################################################################
+
+FROM docker.io/library/caddy:2.11.4-alpine
+
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
