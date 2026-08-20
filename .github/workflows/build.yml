@@ -37,6 +37,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           flavor: latest=auto
+          tags: |
+            # set latest tag for PUBLISH_BRANCH
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', env.PUBLISH_BRANCH) }}
           images: ${{ env.REGISTRY }}/${{ env.OWNER_IMAGE }}
 
       - name: Set up QEMU
